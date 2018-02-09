@@ -10,7 +10,6 @@ namespace ConsoleApp3
             updatingEntity.RoundAuctionsStatus.UpdateProviders(parameter.ProvidersToUpdate);
 
             updatingEntity.Status = updatingEntity.Status.UpdateProviders(parameter.ProvidersToUpdate);
-
         }
 
     }

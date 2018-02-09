@@ -25,7 +25,6 @@ namespace ConsoleApp3
         public void Update<TParameters>(IUpdateStrategy<Auction, TParameters> updateStrategy, TParameters parameters) where TParameters : IParameters
         {
             base.Update<TParameters>(this, updateStrategy, parameters);
-
         }
     }
 }

@@ -22,7 +22,7 @@ namespace ConsoleApp3
             if (providers.Count == 2)
                 Auction.Providers = providers;
 
-            return new StatusAuctionDraft(Auction);
+            return new StatusAuctionNew(Auction);
         }
     }
 }
