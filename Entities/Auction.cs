@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using Entities.Interfaces;
 
-namespace ConsoleApp3
+namespace Entities
 {
     public class Auction : AuctionBase<Auction>, IStatus<StatusAuction<Auction>>, IEnableToUpdate<Auction>, IEnableToAdd<Auction>
     {
         public RoundAuctionsStatus RoundAuctionsStatus {  get;   set; }
-     
+        public DateTime OpeningDate { get; set; }
+
 
         public Auction(IAuctionStatusFactory auctionStatusFactory,
             IRoundAuctionStatusFactory roundAuctionStatusFactory)

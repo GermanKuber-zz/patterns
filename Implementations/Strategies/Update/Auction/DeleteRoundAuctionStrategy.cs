@@ -1,8 +1,10 @@
-﻿namespace ConsoleApp3
+﻿using Entities.Interfaces;
+
+namespace Implementations.Strategies.Update.Auction
 {
-    public class DeleteRoundAuctionStrategy : IUpdateStrategy<Auction, DeleteRoundAuctionParameter>
+    public class DeleteRoundAuctionStrategy : IUpdateStrategy<Entities.Auction, DeleteRoundAuctionParameter>
     {
-        public void Execute(Auction updatingEntity, DeleteRoundAuctionParameter parameter)
+        public void Execute(Entities.Auction updatingEntity, DeleteRoundAuctionParameter parameter)
         {
 
             updatingEntity.RoundAuctionsStatus = updatingEntity.RoundAuctionsStatus.DeleteRound(parameter.DeleteRoundAuction);
@@ -13,9 +15,9 @@
 
     public class DeleteRoundAuctionParameter : IParameters
     {
-        public RoundAuction DeleteRoundAuction { get; }
+        public Entities.RoundAuction DeleteRoundAuction { get; }
 
-        public DeleteRoundAuctionParameter(RoundAuction deleteRoundAuction)
+        public DeleteRoundAuctionParameter(Entities.RoundAuction deleteRoundAuction)
         {
             DeleteRoundAuction = deleteRoundAuction;
         }

@@ -1,9 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Entities;
+using Entities.Interfaces;
+using Entities.Interfaces.Collections;
+using Implementations.Collections;
+using Implementations.Factories;
+using Implementations.Strategies.Update.RoundAuction;
 
-namespace ConsoleApp3
+namespace Implementations.RoundAuctionsStatus
 {
-    public class RoundAuctionsStatusHasRounds : RoundAuctionsStatus
+    public class RoundAuctionsStatusHasRounds : Entities.RoundAuctionsStatus
     {
         public RoundAuctionsStatusHasRounds(Auction auction, RoundAuction newRoundAunction) : base(auction)
         {
@@ -14,7 +20,7 @@ namespace ConsoleApp3
             newRoundAunctions?.Select(x => AddRound(x));
         }
 
-        public override RoundAuctionsStatus AddRound(RoundAuction newRoundAuction)
+        public override Entities.RoundAuctionsStatus AddRound(RoundAuction newRoundAuction)
         {
             if (Rounds == null)
                 Rounds = new List<RoundAuction>();
@@ -23,7 +29,7 @@ namespace ConsoleApp3
 
             return this;
         }
-        public override RoundAuctionsStatus DeleteRound(RoundAuction roundAuctionToDelete)
+        public override Entities.RoundAuctionsStatus DeleteRound(RoundAuction roundAuctionToDelete)
         {
             Rounds?.Remove(roundAuctionToDelete);
 
@@ -32,7 +38,7 @@ namespace ConsoleApp3
 
             return this;
         }
-        public override void UpdateProviders(List<Provider> providers)
+        public override void UpdateProviders(IProviders providers)
         {
             var round = GetActualRound();
             if (round != null)
@@ -40,7 +46,7 @@ namespace ConsoleApp3
                 //Null Object Pattern
                 var roundAuctionStrategyFactory = new RoundAuctionStrategyFactory();
                 var updateProviderStrategy = roundAuctionStrategyFactory.Make<UpdateProvidersRoundAuctionParameters>(StrategyTypeEnum.UpdateProvider);
-                round.Update(updateProviderStrategy, new UpdateProvidersRoundAuctionParameters(providers, Auction));
+                round.Update(updateProviderStrategy, new UpdateProvidersRoundAuctionParameters(new Providers(providers.Get()), Auction));
             }
         }
     }

@@ -1,4 +1,8 @@
-﻿namespace ConsoleApp3
+﻿using Entities;
+using Entities.Interfaces;
+using Implementations.Strategies.Update.Auction;
+
+namespace Implementations.Factories
 {
     public class AuctionStrategyFactory : IAuctionFactoryStrategy
     {

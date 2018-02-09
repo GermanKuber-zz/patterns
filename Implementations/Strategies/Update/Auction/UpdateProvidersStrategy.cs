@@ -1,25 +1,28 @@
 ﻿using System.Collections.Generic;
+using Entities;
+using Entities.Interfaces;
+using Entities.Interfaces.Collections;
 
-namespace ConsoleApp3
+namespace Implementations.Strategies.Update.Auction
 {
-    public class UpdateProvidersStrategy : IUpdateStrategy<Auction, UpdateProviderParameter>
+    public class UpdateProvidersStrategy : IUpdateStrategy<Entities.Auction, UpdateProviderParameter>
     {
-        public void Execute(Auction updatingEntity, UpdateProviderParameter parameter)
+        public void Execute(Entities.Auction updatingEntity, UpdateProviderParameter parameter)
         {
 
-            updatingEntity.RoundAuctionsStatus.UpdateProviders(parameter.ProvidersToUpdate);
+            updatingEntity.RoundAuctionsStatus.UpdateProviders(parameter.Providers.Invited());
 
-            updatingEntity.Status = updatingEntity.Status.UpdateProviders(parameter.ProvidersToUpdate);
+            updatingEntity.Status = updatingEntity.Status.UpdateProviders(parameter.Providers.Get());
         }
 
     }
 
     public class UpdateProviderParameter : IParameters
     {
-        public List<Provider> ProvidersToUpdate { get; set; }
-        public UpdateProviderParameter(List<Provider> providersToUpdate)
+        public IProviders Providers { get; set; }
+        public UpdateProviderParameter(IProviders providers)
         {
-            ProvidersToUpdate = providersToUpdate;
+            Providers = providers;
         }
     }
 }

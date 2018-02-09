@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Entities.Interfaces.Collections;
 
-namespace ConsoleApp3
+namespace Entities
 {
     public abstract class RoundAuctionsStatus 
     {
@@ -20,7 +21,7 @@ namespace ConsoleApp3
         public bool HasRounds() {
             return Rounds.Any();
         }
-        public abstract void UpdateProviders(List<Provider> providers);
+        public abstract void UpdateProviders(IProviders providers);
         public abstract RoundAuctionsStatus AddRound(RoundAuction newRoundAuction);
         public abstract RoundAuctionsStatus DeleteRound(RoundAuction roundAuctionToDelete);
     }

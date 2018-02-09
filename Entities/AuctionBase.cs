@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Entities.Interfaces;
 
-namespace ConsoleApp3
+namespace Entities
 {
     public abstract class AuctionBase<EntityToExecuteStrategy> {
         public string Title { get; set; }

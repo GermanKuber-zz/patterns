@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Entities.Interfaces;
 
-namespace ConsoleApp3
+namespace Entities
 {
     public class RoundAuction : AuctionBase<RoundAuction>, IStatus<StatusAuction<RoundAuction>>, IEnableToUpdate<RoundAuction>, IEnableToAdd<RoundAuction>
     {

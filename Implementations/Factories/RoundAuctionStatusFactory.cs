@@ -1,8 +1,12 @@
-﻿namespace ConsoleApp3
+﻿using Entities;
+using Entities.Interfaces;
+using Implementations.RoundAuctionsStatus;
+
+namespace Implementations.Factories
 {
     public class RoundAuctionStatusFactory : IRoundAuctionStatusFactory
     {
-        public RoundAuctionsStatus Make(RoundAuctionStatusTypeEnum type, Auction auction, RoundAuction newRound = null)
+        public Entities.RoundAuctionsStatus Make(RoundAuctionStatusTypeEnum type, Auction auction, RoundAuction newRound = null)
         {
             switch (type)
             {

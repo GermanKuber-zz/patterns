@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
+using Entities;
 
-namespace ConsoleApp3
+namespace Implementations.StatusAuction
 {
     public class StatusAuctionNew : StatusAuction<Auction>
     {
+        public override AuctionStatusEnum Status => AuctionStatusEnum.New;
+
         public StatusAuctionNew(AuctionBase<Auction> auction) : base(auction)
         {
         }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ConsoleApp3
+namespace Entities
 {
     public abstract class StatusAuction<TAuction> {
         protected AuctionBase<TAuction> Auction { get; }
@@ -10,8 +10,20 @@ namespace ConsoleApp3
             Auction = auction;
         }
 
+        public abstract AuctionStatusEnum Status { get;  }
+
         public abstract StatusAuction<TAuction> UpdateProviders(List<Provider> providers);
         public abstract StatusAuction<TAuction> Close();
 
+    }
+
+    public enum AuctionStatusEnum
+    {
+        Draft,
+        New,
+        Open,
+        Cancel,
+        Empty,
+        Close
     }
 }

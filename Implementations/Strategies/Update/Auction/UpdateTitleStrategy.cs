@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Entities.Interfaces;
 
-namespace ConsoleApp3
+namespace Implementations.Strategies.Update.Auction
 {
-    public class UpdateTitleStrategy : IStrategy<Auction,UpdateTitleParameter>
+    public class UpdateTitleStrategy : IStrategy<Entities.Auction,UpdateTitleParameter>
     {
-        public void Execute(Auction updatingEntity, UpdateTitleParameter parameter)
+        public void Execute(Entities.Auction updatingEntity, UpdateTitleParameter parameter)
         {
             if (parameter.Name == "Mariano") {
                 updatingEntity.Title = parameter.Name;

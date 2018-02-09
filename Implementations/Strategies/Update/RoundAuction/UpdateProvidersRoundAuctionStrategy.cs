@@ -1,33 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using Entities.Interfaces;
+using Implementations.Collections;
 
-namespace ConsoleApp3
+namespace Implementations.Strategies.Update.RoundAuction
 {
-
-    public class UpdateProvidersRoundAuctionStrategy : IUpdateStrategy<Auction, UpdateProviderParameter>
+    public class
+        UpdateProvidersRoundAuctionStrategy : IUpdateStrategy<Entities.Auction, UpdateProvidersRoundAuctionParameters>
     {
-        public void Execute(Auction updatingEntity, UpdateProviderParameter parameter)
+        public void Execute(Entities.Auction updatingEntity, UpdateProvidersRoundAuctionParameters parameter)
         {
-            updatingEntity.Status = updatingEntity.Status.UpdateProviders(parameter.ProvidersToUpdate);
-            var UpdateFactoStrategy = new AuctionStrategyFactory();
-
-            var updateProviderStrategy = UpdateFactoStrategy.Make<UpdateProviderParameter>(StrategyTypeEnum.UpdateProvider);
+            updatingEntity.Status = updatingEntity.Status.UpdateProviders(parameter.Providers.Get());
+           
         }
-
     }
 
     public class UpdateProvidersRoundAuctionParameters : IParameters
     {
-        public List<Provider> ProvidersToUpdate { get; set; }
-        public Auction AuctionToUpdate { get; }
+        public Providers Providers { get; set; }
+        public Entities.Auction AuctionToUpdate { get; }
 
-        public UpdateProvidersRoundAuctionParameters(List<Provider> providersToUpdate, Auction auctionToUpdate)
+        public UpdateProvidersRoundAuctionParameters(Providers providers, Entities.Auction auctionToUpdate)
         {
-            ProvidersToUpdate = providersToUpdate;
+            Providers = providers;
             AuctionToUpdate = auctionToUpdate;
         }
     }
-
-   
-
-  
 }

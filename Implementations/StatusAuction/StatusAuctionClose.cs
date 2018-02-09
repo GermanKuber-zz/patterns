@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
+using Entities;
 
-namespace ConsoleApp3
+namespace Implementations.StatusAuction
 {
     public class StatusAuctionClose : StatusAuction<Auction>
     {
+        public override AuctionStatusEnum Status => AuctionStatusEnum.Cancel;
+
         public StatusAuctionClose(AuctionBase<Auction> auction) : base(auction)
         {
         }
@@ -12,6 +15,7 @@ namespace ConsoleApp3
         {
             return this;
         }
+
 
         public override StatusAuction<Auction> UpdateProviders(List<Provider> providers)
         {

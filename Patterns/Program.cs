@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using Entities;
+using Entities.Interfaces;
+using Implementations.Collections;
+using Implementations.Factories;
+using Implementations.Strategies.Update.Auction;
 
-namespace ConsoleApp3
+namespace Patterns
 {
     class Program
     {
@@ -11,9 +16,11 @@ namespace ConsoleApp3
 
             var auctionStrategyFactory = new AuctionStrategyFactory();
 
-            var updateProviderStrategy = auctionStrategyFactory.Make<UpdateProviderParameter>(StrategyTypeEnum.UpdateProvider);
+            var updateProviderStrategy =
+                auctionStrategyFactory.Make<UpdateProviderParameter>(StrategyTypeEnum.UpdateProvider);
 
-            var updateParameter = new UpdateProviderParameter(new List<Provider> { new Provider { Name = "Juan" } });
+            var updateParameter =
+                new UpdateProviderParameter(new Providers(new List<Provider> {new Provider {Name = "Juan"}}));
 
 
             var auctionStatusFactory = new AuctionStatusFactory();
@@ -31,19 +38,19 @@ namespace ConsoleApp3
 
             //Round Auction
 
-            var addRoundAuctionStrategy = auctionStrategyFactory.Make<AddRoundAuctionParameter>(StrategyTypeEnum.AddRound);
+            var addRoundAuctionStrategy =
+                auctionStrategyFactory.Make<AddRoundAuctionParameter>(StrategyTypeEnum.AddRound);
 
             var addRoundAuctionParameters = new AddRoundAuctionParameter(newRound1);
             auction.Update(addRoundAuctionStrategy, addRoundAuctionParameters);
-           
-
 
 
             var addRoundAuctionParameters2 = new AddRoundAuctionParameter(newRound2);
             auction.Update(addRoundAuctionStrategy, addRoundAuctionParameters2);
 
 
-            var deleteRoundAuctionStrategy = auctionStrategyFactory.Make<DeleteRoundAuctionParameter>(StrategyTypeEnum.DeleteRound);
+            var deleteRoundAuctionStrategy =
+                auctionStrategyFactory.Make<DeleteRoundAuctionParameter>(StrategyTypeEnum.DeleteRound);
             var deleteRoundAuctionParameters = new DeleteRoundAuctionParameter(newRound1);
             auction.Update(deleteRoundAuctionStrategy, deleteRoundAuctionParameters);
 
@@ -53,12 +60,6 @@ namespace ConsoleApp3
 
             var deleteRoundAuctionParameters2 = new DeleteRoundAuctionParameter(newRound2);
             auction.Update(deleteRoundAuctionStrategy, deleteRoundAuctionParameters2);
-
-
-         
-
         }
-
-
     }
 }

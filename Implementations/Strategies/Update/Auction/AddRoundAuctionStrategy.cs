@@ -1,8 +1,10 @@
-﻿namespace ConsoleApp3
+﻿using Entities.Interfaces;
+
+namespace Implementations.Strategies.Update.Auction
 {
-    public class AddRoundAuctionStrategy : IUpdateStrategy<Auction, AddRoundAuctionParameter>
+    public class AddRoundAuctionStrategy : IUpdateStrategy<Entities.Auction, AddRoundAuctionParameter>
     {
-        public void Execute(Auction updatingEntity, AddRoundAuctionParameter parameter)
+        public void Execute(Entities.Auction updatingEntity, AddRoundAuctionParameter parameter)
         {
 
             updatingEntity.RoundAuctionsStatus = updatingEntity.RoundAuctionsStatus.AddRound(parameter.NewRoundAuction);
@@ -13,9 +15,9 @@
 
     public class AddRoundAuctionParameter : IParameters
     {
-        public RoundAuction NewRoundAuction { get; }
+        public Entities.RoundAuction NewRoundAuction { get; }
 
-        public AddRoundAuctionParameter(RoundAuction newRoundAuction)
+        public AddRoundAuctionParameter(Entities.RoundAuction newRoundAuction)
         {
             NewRoundAuction = newRoundAuction;
         }
