@@ -1,8 +1,15 @@
 ﻿namespace ConsoleApp3
 {
-    public enum AuctionStatusTypeEnum {
+    public enum AuctionStatusTypeEnum
+    {
         New,
         Draft,
         Close
+    }
+
+    public enum RoundAuctionStatusTypeEnum
+    {
+        HasRound,
+        HasNotRound
     }
 }

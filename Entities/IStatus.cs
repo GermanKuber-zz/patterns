@@ -1,8 +1,7 @@
 ﻿namespace ConsoleApp3
 {
-    public interface IStatus {
-         StatusAuction Status { get;  set; }
-        void ChangeStatus(StatusAuction newStatus);
-
+    public interface IStatus<TStatus>
+    {
+        TStatus Status { get; set; }
     }
 }

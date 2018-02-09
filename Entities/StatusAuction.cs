@@ -2,16 +2,16 @@
 
 namespace ConsoleApp3
 {
-    public abstract class StatusAuction {
-        protected AuctionBase Auction { get; }
+    public abstract class StatusAuction<TAuction> {
+        protected AuctionBase<TAuction> Auction { get; }
 
-        public StatusAuction(AuctionBase auction)
+        public StatusAuction(AuctionBase<TAuction> auction)
         {
             Auction = auction;
         }
 
-        public abstract StatusAuction UpdateProviders(List<Provider> providers);
-        public abstract StatusAuction Close();
+        public abstract StatusAuction<TAuction> UpdateProviders(List<Provider> providers);
+        public abstract StatusAuction<TAuction> Close();
 
     }
 }

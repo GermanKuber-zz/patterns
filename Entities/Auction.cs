@@ -1,28 +1,31 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace ConsoleApp3
 {
-    public class Auction :AuctionBase, IStatus<StatusAuction>, IEnableToUpdate<Auction>, IEnableToAdd<Auction>
+    public class Auction : AuctionBase<Auction>, IStatus<StatusAuction<Auction>>, IEnableToUpdate<Auction>, IEnableToAdd<Auction>
     {
+        public RoundAuctionsStatus RoundAuctionsStatus {  get;   set; }
+     
 
-        public Auction(IAuctionStatusFactory factory)
+        public Auction(IAuctionStatusFactory auctionStatusFactory,
+            IRoundAuctionStatusFactory roundAuctionStatusFactory)
         {
-            Status = factory.Make(AuctionStatusTypeEnum.New, this);
+            Status = auctionStatusFactory.Make(AuctionStatusTypeEnum.New, this);
+            RoundAuctionsStatus = roundAuctionStatusFactory.Make(RoundAuctionStatusTypeEnum.HasNotRound, this);
         }
 
-        public void ChangeStatus(StatusAuction newStatus)
+
+
+        public void Add<TParameters>(IAddStrategy<Auction, TParameters> updateStrategy, TParameters parameters) where TParameters : IParameters
         {
-            this.Status = newStatus;
+            base.Add<TParameters>(this, updateStrategy, parameters);
         }
 
         public void Update<TParameters>(IUpdateStrategy<Auction, TParameters> updateStrategy, TParameters parameters) where TParameters : IParameters
         {
-            updateStrategy.Execute(this, parameters);
-        }
+            base.Update<TParameters>(this, updateStrategy, parameters);
 
-        public void Add<TParameters>(IAddStrategy<Auction, TParameters> addStrategy, TParameters parameters) where TParameters : IParameters
-        {
-            addStrategy.Execute(this, parameters);
         }
     }
 }

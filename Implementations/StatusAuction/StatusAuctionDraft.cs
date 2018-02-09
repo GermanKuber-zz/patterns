@@ -2,13 +2,13 @@
 
 namespace ConsoleApp3
 {
-    public class StatusAuctionDraft : StatusAuction
+    public class StatusAuctionDraft : StatusAuction<Auction>
     {
-        public StatusAuctionDraft(AuctionBase auction) : base(auction)
+        public StatusAuctionDraft(AuctionBase<Auction> auction) : base(auction)
         {
         }
 
-        public override StatusAuction Close()
+        public override StatusAuction<Auction> Close()
         {
             if (Auction.Providers.Count <= 0)
                 return this;
@@ -17,7 +17,7 @@ namespace ConsoleApp3
 
         }
 
-        public override StatusAuction UpdateProviders(List<Provider> providers)
+        public override StatusAuction<Auction> UpdateProviders(List<Provider> providers)
         {
             if (providers.Count == 2)
                 Auction.Providers = providers;

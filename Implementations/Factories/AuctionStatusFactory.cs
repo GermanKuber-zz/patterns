@@ -4,7 +4,7 @@
     {
 
 
-        public StatusAuction Make(AuctionStatusTypeEnum type, Auction auction)
+        public StatusAuction<Auction> Make(AuctionStatusTypeEnum type, Auction auction)
         {
             switch (type)
             {
@@ -19,4 +19,7 @@
         }
 
     }
+
+
+
 }

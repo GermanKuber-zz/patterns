@@ -2,18 +2,18 @@
 
 namespace ConsoleApp3
 {
-    public class StatusAuctionNew : StatusAuction
+    public class StatusAuctionNew : StatusAuction<Auction>
     {
-        public StatusAuctionNew(AuctionBase auction) : base(auction)
+        public StatusAuctionNew(AuctionBase<Auction> auction) : base(auction)
         {
         }
 
-        public override StatusAuction Close()
+        public override StatusAuction<Auction> Close()
         {
             return new StatusAuctionClose(Auction);
         }
 
-        public override StatusAuction UpdateProviders(List<Provider> providers)
+        public override StatusAuction<Auction> UpdateProviders(List<Provider> providers)
         {
             return this;
         }

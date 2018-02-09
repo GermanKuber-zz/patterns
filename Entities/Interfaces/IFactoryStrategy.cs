@@ -8,4 +8,8 @@
     {
 
     }
+    public interface IRoundAuctionFactoryStrategy : IFactoryUpdateStrategy<RoundAuction>
+    {
+
+    }
 }

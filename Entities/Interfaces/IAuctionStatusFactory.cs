@@ -2,7 +2,7 @@
 {
     public interface IAuctionStatusFactory
     {
-        StatusAuction Make(AuctionStatusTypeEnum type, Auction auction);
+        StatusAuction<Auction> Make(AuctionStatusTypeEnum type, Auction auction);
 
     }
 }

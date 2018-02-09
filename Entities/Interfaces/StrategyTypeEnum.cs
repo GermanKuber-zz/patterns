@@ -3,6 +3,8 @@
     public enum StrategyTypeEnum
     {
         UpdateProvider,
-        CreateBuyer
+        CreateBuyer,
+        AddRound,
+        DeleteRound
     }
 }
