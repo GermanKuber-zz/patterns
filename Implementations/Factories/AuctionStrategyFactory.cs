@@ -4,7 +4,7 @@ using Implementations.Strategies.Update.Auction;
 
 namespace Implementations.Factories
 {
-    public class AuctionStrategyFactory : IAuctionFactoryStrategy
+    public class AuctionStrategyFactory : IAuctionStrategyFactory
     {
         public IUpdateStrategy<Auction,  TParam> Make<TParam>(StrategyTypeEnum type) where TParam : IParameters
         {

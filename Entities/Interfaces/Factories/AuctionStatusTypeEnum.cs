@@ -7,9 +7,8 @@
         Close
     }
 
-    public enum RoundAuctionStatusTypeEnum
+    public enum AuctionTypeEnum
     {
-        HasRound,
-        HasNotRound
+       
     }
 }
