@@ -4,6 +4,7 @@ using Entities.Interfaces;
 namespace Entities
 {
     public abstract class AuctionBase<EntityToExecuteStrategy> {
+        public int Id { get; set; }
         public string Title { get; set; }
         public List<Provider> Providers { get; set; }
         public StatusAuction<EntityToExecuteStrategy> Status { get; set; }

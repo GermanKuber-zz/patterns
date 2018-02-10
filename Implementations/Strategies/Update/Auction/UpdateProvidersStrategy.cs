@@ -12,7 +12,7 @@ namespace Implementations.Strategies.Update.Auction
 
             updatingEntity.RoundAuctionsStatus.UpdateProviders(parameter.Providers.Invited());
 
-            updatingEntity.Status = updatingEntity.Status.UpdateProviders(parameter.Providers.Get());
+            updatingEntity.Status = updatingEntity.Status.UpdateProviders(parameter.Providers);
         }
 
     }

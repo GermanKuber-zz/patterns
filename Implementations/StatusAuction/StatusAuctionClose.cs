@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Entities;
+using Entities.Interfaces.Collections;
 
 namespace Implementations.StatusAuction
 {
@@ -17,7 +18,7 @@ namespace Implementations.StatusAuction
         }
 
 
-        public override StatusAuction<Auction> UpdateProviders(List<Provider> providers)
+        public override StatusAuction<Auction> UpdateProviders(IProviders providers)
         {
             return this;
         }

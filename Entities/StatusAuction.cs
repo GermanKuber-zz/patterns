@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Entities.Interfaces.Collections;
+using System.Collections.Generic;
 
 namespace Entities
 {
@@ -12,18 +13,8 @@ namespace Entities
 
         public abstract AuctionStatusEnum Status { get;  }
 
-        public abstract StatusAuction<TAuction> UpdateProviders(List<Provider> providers);
+        public abstract StatusAuction<TAuction> UpdateProviders(IProviders providers);
         public abstract StatusAuction<TAuction> Close();
 
-    }
-
-    public enum AuctionStatusEnum
-    {
-        Draft,
-        New,
-        Open,
-        Cancel,
-        Empty,
-        Close
     }
 }

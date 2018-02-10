@@ -9,6 +9,6 @@
 
     public enum AuctionTypeEnum
     {
-       
+       Complete
     }
 }

@@ -8,7 +8,7 @@ namespace Implementations.Strategies.Update.RoundAuction
     {
         public void Execute(Entities.Auction updatingEntity, UpdateProvidersRoundAuctionParameters parameter)
         {
-            updatingEntity.Status = updatingEntity.Status.UpdateProviders(parameter.Providers.Get());
+            updatingEntity.Status = updatingEntity.Status.UpdateProviders(parameter.Providers);
            
         }
     }

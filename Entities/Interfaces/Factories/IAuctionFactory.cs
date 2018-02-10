@@ -2,6 +2,6 @@
 {
     public interface IAuctionFactory
     {
-        AuctionBase<Auction> Make(AuctionTypeEnum type);
+        Auction Make(AuctionTypeEnum type);
     }
 }

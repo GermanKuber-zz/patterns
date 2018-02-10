@@ -5,7 +5,7 @@ namespace Implementations.Factories
 {
     public class AuctionFactory : IAuctionFactory
     {
-        public AuctionBase<Auction> Make(AuctionTypeEnum type)
+        public Auction Make(AuctionTypeEnum type)
         {
             var auctionStatusFactory = new AuctionStatusFactory();
             var roundAuctionStatusFactory = new RoundAuctionStatusFactory();
