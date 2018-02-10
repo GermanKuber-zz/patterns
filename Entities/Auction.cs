@@ -9,7 +9,7 @@ namespace Entities
     {
         DateTime OpeningDate { get; set; }
         DateTime LimitOfQuestions { get; set; }
-         IProviders Providers { get; set; }
+        IProviders Providers { get; set; }
         MilestoneManager<TMilestoneable> Milestone { get; set; }
     }
     [AttributeUsage(AttributeTargets.Property, Inherited = false)]
@@ -35,7 +35,7 @@ namespace Entities
         public DateTime LimitOfQuestions { get; set; }
 
         public IAuctionMilestoneManager Milestone { get; set; } = new AuctionMilestoneManager();
-        MilestoneManager<Auction> IMilestoneable<Auction>.Milestone { get ; set  ; }
+        MilestoneManager<Auction> IMilestoneable<Auction>.Milestone { get; set; }
 
         public Auction(IAuctionStatusFactory auctionStatusFactory,
             IRoundAuctionStatusFactory roundAuctionStatusFactory,

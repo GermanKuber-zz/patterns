@@ -4,15 +4,15 @@ using Implementations.Decorators.Strategies;
 
 namespace Implementations.Factories
 {
- 
-    public class AuctionsDecoratorsFactory : IAuctionsDecoratorsFactory
+
+    public class AuctionsMilestonesDecoratorsFactory : IAuctionsMilestonesDecoratorsFactory
     {
-        public IAuctionDecorator< TParameters> Make<TParameters>(DecoratorsEnum type) where TParameters : IParameters
+        public IAuctionDecorator<TParameters> Make<TParameters>(DecoratorsEnum type) where TParameters : IParameters
         {
             switch (type)
             {
                 case DecoratorsEnum.DecoratorAuctionMilestone:
-                    return (IAuctionDecorator< TParameters>)new AuctionMilestoneStrategyDecorator();
+                    return (IAuctionDecorator<TParameters>)new AuctionMilestoneStrategyDecorator();
                 default:
                     break;
             }

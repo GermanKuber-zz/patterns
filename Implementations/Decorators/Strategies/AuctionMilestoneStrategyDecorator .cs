@@ -17,34 +17,34 @@ namespace Implementations.Decorators.Strategies
             base.Execute(updatingEntity, parameter);
 
 
-            Type objtypeUpdating = updatingEntity.GetType();
+            //Type objtypeUpdating = updatingEntity.GetType();
 
 
-            Type objtypePreviousState = previousState.GetType();
+            //Type objtypePreviousState = previousState.GetType();
 
-            // Loop through all properties
-            foreach (PropertyInfo propertyInfo in objtypeUpdating.GetProperties())
-            {
-                var a = propertyInfo.GetValue(updatingEntity);
-                // for every property loop through all attributes
-                foreach (Attribute customAtribute in propertyInfo.GetCustomAttributes(false))
-                {
-                    MilestoneableAttribute milestoneable = (MilestoneableAttribute)customAtribute;
+            //// Loop through all properties
+            //foreach (PropertyInfo propertyInfo in objtypeUpdating.GetProperties())
+            //{
+            //    var a = propertyInfo.GetValue(updatingEntity);
+            //    // for every property loop through all attributes
+            //    foreach (Attribute customAtribute in propertyInfo.GetCustomAttributes(false))
+            //    {
+            //        MilestoneableAttribute milestoneable = (MilestoneableAttribute)customAtribute;
 
-                    var newValue = propertyInfo.GetValue(updatingEntity);
+            //        var newValue = propertyInfo.GetValue(updatingEntity);
 
-                    var oldValue = objtypePreviousState.GetProperty(propertyInfo.Name).GetValue(previousState);
+            //        var oldValue = objtypePreviousState.GetProperty(propertyInfo.Name).GetValue(previousState);
 
-                    var areDifferents = !(oldValue == newValue);
+            //        var areDifferents = !(oldValue == newValue);
 
-                    if (areDifferents)
-                    {
-                        Console.WriteLine($"Propiedad : {propertyInfo.Name}");
-                        Console.WriteLine($"Valor Previo : {newValue}");
-                        Console.WriteLine($"Valor Actual : {oldValue}");
-                    }
-                }
-            }
+            //        if (areDifferents)
+            //        {
+            //            Console.WriteLine($"Propiedad : {propertyInfo.Name}");
+            //            Console.WriteLine($"Valor Previo : {newValue}");
+            //            Console.WriteLine($"Valor Actual : {oldValue}");
+            //        }
+            //    }
+            //}
         }
     }
 

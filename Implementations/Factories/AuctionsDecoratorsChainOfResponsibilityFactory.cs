@@ -4,20 +4,20 @@ using Implementations.ChainOfResponsibility.Decorator;
 
 namespace Implementations.Factories
 {
-    public class AuctionsDecoratorsChainOfResponsibilityFactory : IAuctionsDecoratorsChainOfResponsibilityFactory
+    public class AuctionsMilestoneDecoratorsChainOfResponsibilityFactory : IAuctionsMilestoneDecoratorsChainOfResponsibilityFactory
     {
-        public DecoratorStepAuction<IMilestoneable<Auction>, IMilestoneable<Auction>> Make<TParameters>(AuctionsChainOfResponsibilityEnum type)
+        public IDecoratorStepAuctionChainOfResponsibility<TEntityToProcess, TParameter> Make<TEntityToProcess, TParameter>(AuctionsChainOfResponsibilityEnum type)
         {
             switch (type)
             {
                 case AuctionsChainOfResponsibilityEnum.MilestoneOpeningDateStepAction:
-                    return new DecoratorAuctionMilestoneOpeningDateStepAction();
+                    return (IDecoratorStepAuctionChainOfResponsibility < TEntityToProcess, TParameter >)new DecoratorAuctionMilestoneOpeningDateStepAction();
                 case AuctionsChainOfResponsibilityEnum.MilestoneProvidersStepAction:
-                    return new DecoratorAuctionMilestoneProvidersStepAction();
+                    return (IDecoratorStepAuctionChainOfResponsibility < TEntityToProcess, TParameter >)new DecoratorAuctionMilestoneProvidersStepAction();
                 default:
                     break;
             }
-            return new DecoratorAuctionMilestoneOpeningDateStepAction();
+            return (IDecoratorStepAuctionChainOfResponsibility<TEntityToProcess, TParameter>)new DecoratorAuctionMilestoneOpeningDateStepAction();
 
         }
     }

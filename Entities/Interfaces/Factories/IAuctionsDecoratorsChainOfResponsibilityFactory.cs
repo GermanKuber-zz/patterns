@@ -4,8 +4,8 @@ using Implementations.ChainOfResponsibility.Decorator;
 
 namespace Implementations.Factories
 {
-    public interface IAuctionsDecoratorsChainOfResponsibilityFactory
+    public interface IAuctionsMilestoneDecoratorsChainOfResponsibilityFactory
     {
-        DecoratorStepAuction<IMilestoneable<Auction>, IMilestoneable<Auction>> Make<TParameters>(AuctionsChainOfResponsibilityEnum type) where TParameters : IParameters;
+        IDecoratorStepAuctionChainOfResponsibility<TEntityToProcess, TParameter> Make<TEntityToProcess, TParameter>(AuctionsChainOfResponsibilityEnum type);
     }
 }

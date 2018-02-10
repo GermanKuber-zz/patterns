@@ -1,10 +1,10 @@
 ﻿namespace Implementations.ChainOfResponsibility.Decorator
 {
-    public abstract class DecoratorStepAuction<TEntityToProcess, TParameter>
+    public abstract class DecoratorStepAuctionChainOfResponsibility<TEntityToProcess, TParameter> : IDecoratorStepAuctionChainOfResponsibility<TEntityToProcess, TParameter>
     {
-        protected DecoratorStepAuction<TEntityToProcess, TParameter> successor;
+        protected IDecoratorStepAuctionChainOfResponsibility<TEntityToProcess, TParameter> successor;
 
-        public void SetSuccessor(DecoratorStepAuction<TEntityToProcess, TParameter> successor)
+        public void SetSuccessor(IDecoratorStepAuctionChainOfResponsibility<TEntityToProcess, TParameter> successor)
         {
             this.successor = successor;
         }

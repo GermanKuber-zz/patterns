@@ -13,7 +13,7 @@ namespace Implementations.Tests
     public class DecoratorAuctionMilestoneStrategyTest
     {
         protected IAuctionStrategyFactory AuctionStrategyFactory { get; } = new AuctionStrategyFactory();
-        private IAuctionsDecoratorsFactory _auctionsDecoratorsFactory;
+        private IAuctionsMilestonesDecoratorsFactory _auctionsDecoratorsFactory;
         private IDecorator<Auction, UpdateOpeningParameter> _sut;
         private IUpdateStrategy<Auction, UpdateOpeningParameter> _updateOpeningDateStrategy;
         protected IAuctionFactory AuctionFactory { get; }
@@ -21,7 +21,7 @@ namespace Implementations.Tests
 
         public DecoratorAuctionMilestoneStrategyTest()
         {
-            _auctionsDecoratorsFactory = new AuctionsDecoratorsFactory();
+            _auctionsDecoratorsFactory = new AuctionsMilestonesDecoratorsFactory();
             AuctionFactory = new AuctionFactory();
             Auction = AuctionFactory.Make(AuctionTypeEnum.Complete);
             _sut = _auctionsDecoratorsFactory.Make<UpdateOpeningParameter>(DecoratorsEnum.DecoratorAuctionMilestone);

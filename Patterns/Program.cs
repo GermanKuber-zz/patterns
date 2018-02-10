@@ -63,7 +63,7 @@ namespace Patterns
             auction.Update(deleteRoundAuctionStrategy, deleteRoundAuctionParameters2);
 
 
-            var auctionsDecoratorsFactory = new AuctionsDecoratorsChainOfResponsibilityFactory();
+            var auctionsDecoratorsFactory = new AuctionsMilestoneDecoratorsChainOfResponsibilityFactory();
 
             //var decorator = auctionsDecoratorsFactory.Make<AuctionMilestoneStrategyParameter>(DecoratorsEnum.DecoratorAuctionMilestone);
 

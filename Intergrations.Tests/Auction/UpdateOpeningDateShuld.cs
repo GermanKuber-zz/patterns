@@ -1,5 +1,6 @@
 using Entities;
 using Entities.Interfaces;
+using Implementations.ChainOfResponsibility.Decorator;
 using Implementations.Decorators.Strategies;
 using Implementations.Factories;
 using Implementations.Strategies.Update.Auction;
@@ -29,18 +30,20 @@ namespace Intergrations.Tests
         public void Update_Opening_Date()
         {
             var now = DateTime.Now;
-            var auctionsDecoratorsFactory = new AuctionsDecoratorsFactory();
+            var auctionsDecoratorsFactory = new AuctionsMilestonesDecoratorsFactory();
 
-            var decoratorAuctionMilestone = auctionsDecoratorsFactory.Make<UpdateOpeningParameter>(DecoratorsEnum.DecoratorAuctionMilestone);
+          var decoratorAuctionMilestone = auctionsDecoratorsFactory.Make<UpdateOpeningParameter>(DecoratorsEnum.DecoratorAuctionMilestone);
 
             var updateOpeningParameter = new UpdateOpeningParameter(now);
             decoratorAuctionMilestone.SetStrategy(_updateOpeningDateStrategy);
 
-            var auctionsDecoratorsChainOfResponsibilityFactory = new AuctionsDecoratorsChainOfResponsibilityFactory();
+            var auctionsDecoratorsChainOfResponsibilityFactory = new AuctionsMilestoneDecoratorsChainOfResponsibilityFactory();
 
-            var openingDateStep = auctionsDecoratorsChainOfResponsibilityFactory.Make<Auction>(AuctionsChainOfResponsibilityEnum.MilestoneOpeningDateStepAction);
-            var providerStep = auctionsDecoratorsChainOfResponsibilityFactory.Make<Auction>(AuctionsChainOfResponsibilityEnum.MilestoneProvidersStepAction);
+           var openingDateStep = auctionsDecoratorsChainOfResponsibilityFactory.Make<Auction, UpdateOpeningParameter>(AuctionsChainOfResponsibilityEnum.MilestoneOpeningDateStepAction);
+            var providerStep = auctionsDecoratorsChainOfResponsibilityFactory.Make<Auction, UpdateOpeningParameter>(AuctionsChainOfResponsibilityEnum.MilestoneProvidersStepAction);
             openingDateStep.SetSuccessor(providerStep);
+
+            decoratorAuctionMilestone.SetStepsToProcess(openingDateStep);
 
             Sut.Update<UpdateOpeningParameter>(decoratorAuctionMilestone, updateOpeningParameter);
 
