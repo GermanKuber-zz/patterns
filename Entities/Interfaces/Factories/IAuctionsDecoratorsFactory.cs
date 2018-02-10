@@ -5,6 +5,6 @@ namespace Implementations.Factories
 {
     public interface IAuctionsDecoratorsFactory
     {
-        IDecorator<Auction, TParameters> Make<TParameters>(DecoratorsEnum type) where TParameters: IParameters;
+        IAuctionDecorator<TParameters> Make<TParameters>(DecoratorsEnum type) where TParameters: IParameters;
     }
 }

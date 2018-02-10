@@ -15,4 +15,11 @@
     {
         DecoratorAuctionMilestone
     }
+    public enum AuctionsChainOfResponsibilityEnum
+    {
+        MilestoneOpeningDateStepAction,
+        MilestoneProvidersStepAction
+    }
+
 }
+

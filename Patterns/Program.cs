@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Entities;
 using Entities.Interfaces;
 using Implementations.Collections;
+using Implementations.Decorators.Strategies;
 using Implementations.Factories;
 using Implementations.Strategies.Update.Auction;
 
@@ -60,6 +61,17 @@ namespace Patterns
 
             var deleteRoundAuctionParameters2 = new DeleteRoundAuctionParameter(newRound2);
             auction.Update(deleteRoundAuctionStrategy, deleteRoundAuctionParameters2);
+
+
+            var auctionsDecoratorsFactory = new AuctionsDecoratorsChainOfResponsibilityFactory();
+
+            //var decorator = auctionsDecoratorsFactory.Make<AuctionMilestoneStrategyParameter>(DecoratorsEnum.DecoratorAuctionMilestone);
+
+
+
+            //decorator.SetStrategy()
+
+
         }
     }
 }

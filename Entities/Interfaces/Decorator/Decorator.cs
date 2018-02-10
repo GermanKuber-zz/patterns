@@ -2,7 +2,7 @@
 
 namespace Entities.Interfaces
 {
-    public abstract class Decorator<TUpdating,  TParameters> : IStrategy<TUpdating, TParameters>, IDecorator<TUpdating, TParameters> where TParameters:IParameters
+    public abstract class Decorator<TUpdating,  TParameters> :  IDecorator<TUpdating, TParameters>, IUpdateStrategy<TUpdating, TParameters> where TParameters:IParameters
     {
         protected IStrategy<TUpdating, TParameters> StrategyToDecorate;
    

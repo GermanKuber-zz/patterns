@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Implementations.Decorators.Strategies
 {
-    public class AuctionMilestoneStrategyDecorator : Decorator<Auction, UpdateOpeningParameter>
+    public class AuctionMilestoneStrategyDecorator : AuctionDecorator<UpdateOpeningParameter>
     {
         public override void Execute(Auction updatingEntity, UpdateOpeningParameter parameter)
         {
@@ -47,8 +47,5 @@ namespace Implementations.Decorators.Strategies
             }
         }
     }
-    public class AuctionMilestoneStrategyParameter : IParameters
-    {
 
-    }
 }
