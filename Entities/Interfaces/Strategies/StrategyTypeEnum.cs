@@ -5,6 +5,7 @@
         UpdateProvider,
         CreateBuyer,
         AddRound,
-        DeleteRound
+        DeleteRound,
+        UpdateOpeningDate
     }
 }

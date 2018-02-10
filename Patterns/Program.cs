@@ -25,7 +25,7 @@ namespace Patterns
 
             var auctionStatusFactory = new AuctionStatusFactory();
             var roundAuctionStatusFactory = new RoundAuctionStatusFactory();
-            var auction = new Auction(auctionStatusFactory, roundAuctionStatusFactory);
+            var auction = new Auction(auctionStatusFactory, roundAuctionStatusFactory, AuctionStatusTypeEnum.New);
 
             auction.ChangeStatus(auctionStatusFactory.Make(AuctionStatusTypeEnum.Draft, auction));
 

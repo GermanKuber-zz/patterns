@@ -16,6 +16,8 @@ namespace Implementations.Factories
                     return (IUpdateStrategy<Auction, TParam>)new AddRoundAuctionStrategy();
                 case StrategyTypeEnum.DeleteRound:
                     return (IUpdateStrategy<Auction, TParam>)new DeleteRoundAuctionStrategy();
+                case StrategyTypeEnum.UpdateOpeningDate:
+                    return (IUpdateStrategy<Auction, TParam>)new UpdateOpeningDateStrategy();
                 case StrategyTypeEnum.CreateBuyer:
                     break;
 

@@ -22,5 +22,7 @@ namespace Implementations.Collections
         public IAuctions WithOutProviders() => new Auctions(_auctions.Where(x => x.Providers == null
                                                                                  ||
                                                                                  x.Providers.Count == 0));
+        public IEnumerable<Auction> Get() => _auctions;
+
     }
 }
