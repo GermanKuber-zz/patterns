@@ -18,5 +18,18 @@ namespace Implementations.Collections
 
         public List<Provider> Get() => _proviers?.ToList();
 
+        public int CompareTo(object obj)
+        {
+            if (obj == null) return 1;
+
+            var providersToCompare = (IProviders)obj;
+
+            var ifBothHaveSomeQuantity = providersToCompare.Get().Count() == Get().Count();
+            var ifBotHaveTheSamePpoviders = providersToCompare.Get().Any(x => this.Get().Any(s => s.CompareTo(x) == 0));
+            if (ifBothHaveSomeQuantity && ifBotHaveTheSamePpoviders)
+                return 0;
+
+            return 1;
+        }
     }
 }
