@@ -7,4 +7,8 @@ namespace Entities.Interfaces.Collections
         IProviders Invited();
         List<Provider> Get();
     }
+    public interface IMilestones
+    {
+       
+    }
 }

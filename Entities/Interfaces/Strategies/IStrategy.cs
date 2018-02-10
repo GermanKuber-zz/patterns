@@ -1,7 +1,7 @@
 ﻿namespace Entities.Interfaces
 {
-    public interface IStrategy<TUpdating, IParameters>
+    public interface IStrategy<TUpdating, TParameters> where TParameters : IParameters
     {
-        void Execute(TUpdating updatingEntity, IParameters parameter);
+        void Execute(TUpdating updatingEntity, TParameters parameter);
     }
 }

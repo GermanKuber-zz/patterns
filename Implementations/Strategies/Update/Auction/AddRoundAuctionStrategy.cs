@@ -8,7 +8,6 @@ namespace Implementations.Strategies.Update.Auction
         {
 
             updatingEntity.RoundAuctionsStatus = updatingEntity.RoundAuctionsStatus.AddRound(parameter.NewRoundAuction);
-
         }
 
     }

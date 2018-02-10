@@ -14,7 +14,6 @@ namespace Implementations.Tests
         public UpdateOpeningDateStrategyTests()
         {
             Sut = AuctionStrategyFactory.Make<UpdateOpeningParameter>(StrategyTypeEnum.UpdateOpeningDate);
-
         }
 
 

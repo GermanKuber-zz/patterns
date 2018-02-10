@@ -9,6 +9,10 @@
 
     public enum AuctionTypeEnum
     {
-       Complete
+        Complete
+    }
+    public enum DecoratorsEnum
+    {
+        DecoratorAuctionMilestone
     }
 }
