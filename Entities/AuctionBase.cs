@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Entities.Interfaces;
+using Entities.Interfaces.Collections;
 
 namespace Entities
 {
-    public abstract class AuctionBase<EntityToExecuteStrategy> {
+    public abstract class AuctionBase<EntityToExecuteStrategy>: IComparable
+    {
         public int Id { get; set; }
         public string Title { get; set; }
-        public List<Provider> Providers { get; set; }
+        public IProviders Providers { get; set; }
         public StatusAuction<EntityToExecuteStrategy> Status { get; set; }
         public void ChangeStatus(StatusAuction<EntityToExecuteStrategy> newStatus)
         {
@@ -20,6 +23,11 @@ namespace Entities
         {
             updateStrategy.Execute(entityToExecuteStrategy, parameters);
 
+        }
+
+        public int CompareTo(object obj)
+        {
+            return 1;
         }
     }
 }

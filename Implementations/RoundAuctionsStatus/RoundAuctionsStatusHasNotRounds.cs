@@ -17,7 +17,7 @@ namespace Implementations.RoundAuctionsStatus
 
         public override void UpdateProviders(IProviders providers)
         {
-            Auction.Providers = providers.Get();
+            Auction.Providers = providers;
         }
     }
 }

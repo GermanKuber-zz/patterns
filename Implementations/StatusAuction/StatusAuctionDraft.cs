@@ -14,7 +14,7 @@ namespace Implementations.StatusAuction
 
         public override StatusAuction<Auction> Close()
         {
-            if (Auction.Providers.Count <= 0)
+            if (Auction.Providers.Get().Count <= 0)
                 return this;
             else
                 return new StatusAuctionClose(Auction);
@@ -24,7 +24,7 @@ namespace Implementations.StatusAuction
         public override StatusAuction<Auction> UpdateProviders(IProviders providers)
         {
             if (providers.Get().Count == 2)
-                Auction.Providers = providers.Get();
+                Auction.Providers = providers;
 
             return new StatusAuctionNew(Auction);
         }

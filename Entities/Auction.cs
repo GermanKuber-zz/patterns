@@ -5,9 +5,12 @@ using Entities.Interfaces.Collections;
 
 namespace Entities
 {
-    public interface IMilestoneable
+    public interface IMilestoneable<TMilestoneable> where TMilestoneable : IMilestoneable<TMilestoneable>
     {
-
+        DateTime OpeningDate { get; set; }
+        DateTime LimitOfQuestions { get; set; }
+         IProviders Providers { get; set; }
+        MilestoneManager<TMilestoneable> Milestone { get; set; }
     }
     [AttributeUsage(AttributeTargets.Property, Inherited = false)]
     public class MilestoneableAttribute : Attribute
@@ -21,17 +24,18 @@ namespace Entities
         }
 
     }
-    public class Auction : AuctionBase<Auction>, IStatus<StatusAuction<Auction>>, IEnableToUpdate<Auction>, IEnableToAdd<Auction>, ICloneable
+
+    public class Auction : AuctionBase<Auction>, IMilestoneable<Auction>, IStatus<StatusAuction<Auction>>, IEnableToUpdate<Auction>, IEnableToAdd<Auction>, ICloneable
     {
         public RoundAuctionsStatus RoundAuctionsStatus { get; set; }
 
-        [Milestoneable]
+        //[Milestoneable]
         public DateTime OpeningDate { get; set; }
-
 
         public DateTime LimitOfQuestions { get; set; }
 
-        public MilestoneManager Milestone { get; set; }
+        public IAuctionMilestoneManager Milestone { get; set; } = new AuctionMilestoneManager();
+        MilestoneManager<Auction> IMilestoneable<Auction>.Milestone { get ; set  ; }
 
         public Auction(IAuctionStatusFactory auctionStatusFactory,
             IRoundAuctionStatusFactory roundAuctionStatusFactory,
@@ -60,22 +64,18 @@ namespace Entities
             return this.MemberwiseClone();
         }
     }
-    public class MilestoneManager
+    public abstract class MilestoneManager<TMilestoneable> : IMilestoneManager<TMilestoneable>
     {
         private IMilestones Milestones;
         private bool _somePropertyMilestoneableChange;
-        public void PropertyChange<T>(Expression<Func<T, string>> propertyWasChanged)
+        public void PropertyChange<TVMilestoneable, TValue>(TVMilestoneable milestone, TValue newValue, TValue oldValue)
         {
             _somePropertyMilestoneableChange = true;
         }
-        public bool SomePropertyMilestoneableChange()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ResetMilestoneable()
-        {
-            _somePropertyMilestoneableChange = false;
-        }
     }
+
+    public class AuctionMilestoneManager : MilestoneManager<Auction>, IAuctionMilestoneManager
+    {
+    }
+    public interface IAuctionMilestoneManager : IMilestoneManager<Auction> { }
 }
