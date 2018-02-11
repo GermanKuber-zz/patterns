@@ -5,17 +5,7 @@ namespace Entities.Interfaces
     public abstract class Decorator<TUpdating, TParameters>   : IDecorator<TUpdating, TParameters>, IUpdateStrategy<TUpdating, TParameters> where TParameters : IParameters
     {
         protected IStrategy<TUpdating, TParameters> StrategyToDecorate;
-        public bool HasSteps
-        {
-            get
-            {
-                if (FirstStep != null)
-                    return true;
-                return false;
-            }
-        }
-
-        public IDecoratorStepAuctionChainOfResponsibility<TUpdating, TParameters> FirstStep { get; private set; }
+    
 
         public void SetStrategy(IStrategy<TUpdating, TParameters> strategyToDecorate)
         {
@@ -31,13 +21,9 @@ namespace Entities.Interfaces
         {
             if (StrategyToDecorate != null)
                 StrategyToDecorate.Execute(updatingEntity, parameter);
-            if (HasSteps)
-                FirstStep.Process(updatingEntity, parameter);
+          
         }
 
-        public void SetStepsToProcess(IDecoratorStepAuctionChainOfResponsibility<TUpdating, TParameters> firstStep)
-        {
-            FirstStep = firstStep;
-        }
+     
     }
 }
