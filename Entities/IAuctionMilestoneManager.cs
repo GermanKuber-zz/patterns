@@ -1,4 +1,4 @@
 ﻿namespace Entities
 {
-    public interface IAuctionMilestoneManager : IMilestoneManager<Auction> { }
+    public interface IAuctionMilestoneManager : IMilestoneManager<Auction, MilestoneContainer> { }
 }

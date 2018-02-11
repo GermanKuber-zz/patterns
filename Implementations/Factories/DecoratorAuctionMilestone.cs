@@ -12,7 +12,7 @@ namespace Implementations.Factories
             switch (type)
             {
                 case DecoratorsEnum.DecoratorAuctionMilestone:
-                    return (IAuctionDecorator<TParameters>)new AuctionMilestoneStrategyDecorator();
+                    return (IAuctionDecorator<TParameters>)new AuctionMilestoneUpdateOpeningDecorator();
                 default:
                     break;
             }
