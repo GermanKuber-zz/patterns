@@ -11,8 +11,10 @@ namespace Implementations.Factories
         {
             switch (type)
             {
-                case DecoratorsEnum.DecoratorAuctionMilestone:
+                case DecoratorsEnum.AuctionMilestoneUpdateOpeningDate:
                     return (IAuctionDecorator<TParameters>)new AuctionMilestoneUpdateOpeningDecorator();
+                case DecoratorsEnum.AuctionMilestoneUpdateProviders:
+                    return (IAuctionDecorator<TParameters>)new AuctionMilestoneUpdateProvidersDecorator();
                 default:
                     break;
             }

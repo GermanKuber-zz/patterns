@@ -24,7 +24,7 @@ namespace Implementations.Tests
             _auctionsDecoratorsFactory = new AuctionsMilestonesDecoratorsFactory();
             AuctionFactory = new AuctionFactory();
             Auction = AuctionFactory.Make(AuctionTypeEnum.Complete);
-            _sut = _auctionsDecoratorsFactory.Make<UpdateOpeningParameter>(DecoratorsEnum.DecoratorAuctionMilestone);
+            _sut = _auctionsDecoratorsFactory.Make<UpdateOpeningParameter>(DecoratorsEnum.AuctionMilestoneUpdateOpeningDate);
             _updateOpeningDateStrategy = AuctionStrategyFactory.Make<UpdateOpeningParameter>(StrategyTypeEnum.UpdateOpeningDate);
         }
 

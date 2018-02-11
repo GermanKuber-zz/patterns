@@ -13,7 +13,9 @@
     }
     public enum DecoratorsEnum
     {
-        DecoratorAuctionMilestone
+        AuctionMilestoneUpdateOpeningDate,
+        AuctionMilestoneUpdateProviders
+
     }
     public enum AuctionsChainOfResponsibilityEnum
     {

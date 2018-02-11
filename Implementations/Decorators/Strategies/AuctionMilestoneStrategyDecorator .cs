@@ -1,11 +1,5 @@
 ﻿using Entities;
-using Entities.Interfaces;
 using Implementations.Strategies.Update.Auction;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
 
 namespace Implementations.Decorators.Strategies
 {
@@ -20,10 +14,5 @@ namespace Implementations.Decorators.Strategies
                 updatingEntity.Milestone.PropertyChange(previousState, updatingEntity.OpeningDate, previousState.OpeningDate);
 
         }
-    }
-    public class AuctionMilestoneDecoratorBase<TParameters> : AuctionDecorator<TParameters> where TParameters : IParameters
-    {
-
-       
     }
 }
